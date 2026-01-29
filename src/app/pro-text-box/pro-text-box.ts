@@ -16,7 +16,17 @@ export class ProTextBox {
   @Input() inheritedValue: string = '';
   @Input() placeholder: string = '';
 
+  isShowingInherited(): boolean {
+    return (this.inheritedValue !== null) && (this.value === '');
+  }
+  get displayValue(): string {
+    return this.isShowingInherited() ? this.inheritedValue : this.value;
+  }
+
   onDxValueChanged(e: any) {
+    console.log('Value changed:', e.value);
+
+    if (this.isShowingInherited() && (e.value === this.inheritedValue)) return;
     this.value = e.value;
     this.valueChange.emit(e.value);
   }
