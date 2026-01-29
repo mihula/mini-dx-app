@@ -1,12 +1,18 @@
 import { Component, signal } from '@angular/core';
+import { JsonPipe } from '@angular/common';
 import { ProTextBox } from './pro-text-box/pro-text-box';
 
 @Component({
   selector: 'app-root',
-  imports: [ProTextBox],
+  imports: [ProTextBox, JsonPipe],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
+  public data = {
+    value: 'Some value',
+    otherValue: 'Other value',
+    inheritedValue: 'Inherited value'
+  }
   protected readonly title = signal('pro-textbox-demo');
 }
