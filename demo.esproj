@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/0.5.85-alpha">
+  <PropertyGroup>
+    <ProjectType>web</ProjectType>
+    <RootNamespace>demo</RootNamespace>
+    <Name>demo</Name>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="node_modules\**" />
+    <None Remove="dist\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\**" />
+    <Content Include="angular.json" />
+    <Content Include="package.json" />
+    <Content Include="tsconfig.json" />
+    <Content Include="tsconfig.app.json" />
+    <Content Include="tsconfig.spec.json" />
+    <Content Include="karma.conf.js" />
+    <Content Include=".browserslistrc" />
+    <Content Include=".editorconfig" />
+    <Content Include=".gitignore" />
+    <Content Include="README.md" />
+  </ItemGroup>
+</Project>
