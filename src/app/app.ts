@@ -19,6 +19,7 @@ export class AppComponent {
   demoTiles: DemoTile[] = [
     { routerLink: '/', emoticon: '🏠', name: 'Home' },
     { routerLink: '/pro-text-box-demo', emoticon: '📝', name: 'ProTextBox Demo' },
+    { routerLink: '/empty-demo', emoticon: '✨', name: 'Empty Demo' },
     // Přidejte další dema zde
   ];
 }
