@@ -1,59 +1,44 @@
-# Reneho Dx Demo
+# Rene's Angular Demo App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.2.
+This is a simple Angular application for presenting and testing UI components in a modular, demo-oriented way. The app provides a central toolbar with demo tiles, each representing a different feature or component. Each demo is accessible via its own route and is visually represented by an icon and a name.
 
-## Development server
+## Application Structure
 
-To start a local development server, run:
+- **src/app/app.ts**: Main application component, contains the collection of available demos and generates the toolbar.
+- **src/app/app.html**: Main template, displays the demo toolbar and the currently selected demo page.
+- **src/app/app.css**: Styles for the main layout and demo toolbar.
+- **src/app/pro-text-box-demo/**: Folder with the ProTextBox demo (custom textbox component demo).
+- **src/app/empty-demo/**: Folder with the Empty Demo (template for new demos, shows "It Works!").
 
-```bash
-ng serve
-```
+## Available Demos
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- **ProTextBox Demo** (📝): Demonstrates a custom textbox component with data binding.
+- **Empty Demo** (✨): Minimal template for creating new demos, displays a simple "It Works!" message.
 
-## Code scaffolding
+## How to Add a New Demo
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+1. **Clone an Existing Demo**
+   - Copy the `empty-demo` folder and rename it (e.g., `my-new-demo`).
+   - Rename the component files and class names accordingly.
 
-```bash
-ng generate component component-name
-```
+2. **Register the Demo Route**
+   - In `src/app/app.routes.ts`, add a new route for your demo:
+     ```typescript
+     {
+       path: 'my-new-demo',
+       loadComponent: () => import('./my-new-demo/my-new-demo.component').then(m => m.MyNewDemoComponent)
+     }
+     ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+3. **Add the Demo to the Toolbar**
+   - In `src/app/app.ts`, add your demo to the `demoTiles` array:
+     ```typescript
+     { routerLink: '/my-new-demo', emoticon: '🆕', name: 'My New Demo' },
+     ```
 
-```bash
-ng generate --help
-```
+4. **Customize the Demo**
+   - Edit your new demo component's HTML, CSS, and TypeScript files to implement the desired functionality.
 
-## Building
+## Summary
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+This app is designed for quick prototyping and demonstration of Angular UI components. Each demo is isolated, easily accessible, and can be extended or replaced as needed. The toolbar makes navigation between demos fast and intuitive.
