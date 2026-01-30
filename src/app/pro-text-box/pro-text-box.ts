@@ -73,4 +73,10 @@ export class ProTextBox {
   onInput() {
     this.dirty = true;
   }
+
+  onFocusOut(e: any) {
+    if (this.isEmpty() && this.getInheritedValue()) {
+      e.component.option('value', this.displayValue);
+    }
+  }
 }
