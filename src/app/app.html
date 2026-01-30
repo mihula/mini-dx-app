@@ -1,9 +1,10 @@
 <main class="main">
   <div class="content">
-    <div class="left-side">
-      <h1>Demos</h1>
-      <p>More demos here:</p>
-      <a routerLink="/pro-text-box-demo">ProTextBox Demo &rarr;</a>
+    <div class="demo-grid">
+      <a *ngFor="let demo of demoTiles" [routerLink]="demo.routerLink" class="demo-tile">
+        <span class="demo-emoticon">{{ demo.emoticon }}</span>
+        <span>{{ demo.name }}</span>
+      </a>
     </div>
   </div>
 </main>
