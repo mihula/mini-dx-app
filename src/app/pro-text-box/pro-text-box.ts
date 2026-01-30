@@ -1,14 +1,14 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { DxTextBoxModule, DxTextBoxComponent } from 'devextreme-angular';
 import { FormsModule } from '@angular/forms';
-import { NgIf } from '@angular/common';
+import { NgIf, NgClass } from '@angular/common';
 import { isEmpty } from 'rxjs';
 
 export type UniversalRecord = Record<string, unknown>;
 
 @Component({
   selector: 'pro-text-box',
-  imports: [DxTextBoxModule, FormsModule, NgIf],
+  imports: [DxTextBoxModule, FormsModule, NgIf, NgClass],
   templateUrl: './pro-text-box.html',
   styleUrl: './pro-text-box.css',
   standalone: true,
