@@ -1,17 +1,12 @@
 <main class="main">
   <div class="content">
     <div class="left-side">
-      <h1>Test ProTextBox</h1>
-      <div>{{data | json}}</div>
-
-      <h3>Edit the Value</h3>
-      <pro-text-box [data]="data" fieldName="value" [placeholder]="'Enter value for field'"></pro-text-box>
-
-      <h3>Value + Inherit</h3>
-      <pro-text-box [data]="data" fieldName="value" inheritedFieldName="ivalue" [placeholder]="'You can see me only if Inherit is empty'"></pro-text-box>
-
-      <h3>Edit the Inherit</h3>
-      <pro-text-box [data]="data" fieldName="ivalue" [placeholder]="'Enter value for Inherit'"></pro-text-box>
+      <h1>Demos</h1>
+      <p>More demos here:</p>
+      <a routerLink="/pro-text-box-demo">ProTextBox Demo &rarr;</a>
+      <!-- (Volitelně zde může být screenshot) -->
     </div>
   </div>
 </main>
+<hr/>
+<router-outlet></router-outlet>
