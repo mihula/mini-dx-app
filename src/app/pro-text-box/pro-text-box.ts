@@ -41,7 +41,7 @@ export class ProTextBox {
   }
 
   isInherited(): boolean {
-    return this.hasInherited() && this.isEmpty();
+    return this.hasInherited() && this.isEmpty() && !this.dirty;
   }
 
   getRealValue(): string | null {
