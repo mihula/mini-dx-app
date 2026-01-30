@@ -35,6 +35,15 @@ export class ProTextBox {
     return this.isEmptyValue(this.getRealValue());
   }
 
+  // mam inherited fieldname a ten klic existuje v data
+  hasInherited(): boolean {
+    return this.inheritedFieldName in this.data && this.data[this.inheritedFieldName] !== null;
+  }
+
+  isInherited(): boolean {
+    return this.hasInherited() && this.isEmpty();
+  }
+
   getRealValue(): string | null {
     return this.data?.[this.fieldName] as string;
   }
@@ -57,9 +66,9 @@ export class ProTextBox {
     if (this.dirty) {
       if (this.isEmptyValue(newValue)) {
         console.log(`onValueChanged: there will be next onValueChanged with dirty==false which will set inherited value`);
-        let stillInherited = e.previousValue === this.getInheritedValue();
-        if (stillInherited)
-          console.log(`onValueChanged: ...until it isn't... merde 💩`);
+        //let stillInherited = e.previousValue === this.getInheritedValue();
+        //if (stillInherited)
+        //  console.log(`onValueChanged: ...until it isn't... merde 💩`);
         this.data[this.fieldName] = null;
       }
       else {
