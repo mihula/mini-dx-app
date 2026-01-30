@@ -21,7 +21,4 @@
     <Content Include=".gitignore" />
     <Content Include="README.md" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="mini-dx-app.njsproj" />
-  </ItemGroup>
 </Project>

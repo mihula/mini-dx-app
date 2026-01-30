@@ -15,15 +15,6 @@
       "request": "launch",
       "preLaunchTask": "npm: test",
       "url": "http://localhost:9876/debug.html"
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Launch Program",
-      "skipFiles": [ "<node_internals>/**" ],
-      "preLaunchTask": "npm: start",
-      "cwd": "${workspaceFolder}",
-      "console": "externalTerminal"
     }
   ]
 }
