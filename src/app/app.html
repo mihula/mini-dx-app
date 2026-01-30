@@ -2,24 +2,11 @@
   <div class="content">
     <div class="left-side">
       <h1>Test ProTextBox</h1>
-      <div>{{data | json}}</div>
 
-      <h3>Value</h3>
-      <pro-text-box [(value)]="data.value"
-                    [placeholder]="'Enter some value'"></pro-text-box>
+      <div>Data: {{data | json}}</div>
 
       <h3>Value + Inherited</h3>
-      <pro-text-box [(value)]="data.value"
-                    [inheritedValue]="data.inheritedValue"
-                    [placeholder]="data.inheritedValue || 'Enter some value'"></pro-text-box>
-
-      <h3>Other Value</h3>
-      <pro-text-box [(value)]="data.otherValue"
-                    [placeholder]="'Enter some other value'"></pro-text-box>
-
-      <h3>Changing Value in Inherited</h3>
-      <pro-text-box [(value)]="data.inheritedValue"
-                    [placeholder]="'Enter value for Inherited'"></pro-text-box>
+      <pro-text-box [(model)]="data"></pro-text-box>
     </div>
   </div>
 </main>

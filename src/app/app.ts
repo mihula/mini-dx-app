@@ -11,8 +11,6 @@ import { ProTextBox } from './pro-text-box/pro-text-box';
 export class App {
   public data = {
     value: 'Some value',
-    otherValue: 'Other value',
     inheritedValue: 'Inherited value'
   }
-  protected readonly title = signal('pro-textbox-demo');
 }

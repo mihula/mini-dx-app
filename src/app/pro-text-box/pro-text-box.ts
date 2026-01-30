@@ -2,6 +2,11 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { DxTextBoxModule } from 'devextreme-angular';
 import { FormsModule } from '@angular/forms';
 
+export interface ProTextBoxModel {
+  value: string;
+  inheritedValue?: string;
+}
+
 @Component({
   selector: 'pro-text-box',
   imports: [DxTextBoxModule, FormsModule],
@@ -11,23 +16,38 @@ import { FormsModule } from '@angular/forms';
 })
 
 export class ProTextBox {
-  @Input() value: string = '';
-  @Output() valueChange = new EventEmitter<string>();
-  @Input() inheritedValue: string = '';
+  @Input() model: ProTextBoxModel = { value: '' };
+  @Output() modelChange = new EventEmitter<ProTextBoxModel>();
   @Input() placeholder: string = '';
 
-  isShowingInherited(): boolean {
-    return (this.inheritedValue !== null) && (this.value === '');
-  }
+  editingInherited = false;
+
   get displayValue(): string {
-    return this.isShowingInherited() ? this.inheritedValue : this.value;
+    if (this.model.value === '' && this.model.inheritedValue && !this.editingInherited) {
+      return this.model.inheritedValue;
+    }
+    return this.model.value;
+  }
+
+  onDxFocusIn(e: any) {
+    if (this.model.value === '' && this.model.inheritedValue && !this.editingInherited) {
+      this.editingInherited = true;
+      e.component.option('value', ''); // vyprázdní input
+    }
   }
 
   onDxValueChanged(e: any) {
-    console.log('Value changed:', e.value);
+    if (this.editingInherited) {
+      this.editingInherited = false;
+    }
+    this.model = { ...this.model, value: e.value ?? '' };
+    this.modelChange.emit(this.model);
+  }
 
-    if (this.isShowingInherited() && (e.value === this.inheritedValue)) return;
-    this.value = e.value;
-    this.valueChange.emit(e.value);
+  onDxFocusOut(e: any) {
+    if (this.model.value === '' && this.model.inheritedValue) {
+      this.editingInherited = false;
+      e.component.option('value', this.model.inheritedValue);
+    }
   }
 }
