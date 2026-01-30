@@ -1,4 +1,8 @@
 <dx-text-box [value]="displayValue"
              [placeholder]="placeholder"
              (onValueChanged)="onValueChanged($event)"></dx-text-box>
-Value: {{data[fieldKey]?.value}} | Inherited: {{data[fieldKey]?.ivalue}} | Display: {{displayValue}}
+<div style="font-size: 0.9em; color: #888; margin-top: 0.25em;">
+  Value: {{data[fieldName]}}
+  <span *ngIf="inheritedFieldName">| Inherited: {{data[inheritedFieldName]}}</span>
+  | Display: {{displayValue}}
+</div>

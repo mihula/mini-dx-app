@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { JsonPipe } from '@angular/common';
-import { ProTextBox, DataSet } from './pro-text-box/pro-text-box';
+import { ProTextBox } from './pro-text-box/pro-text-box';
+
+export type UniversalRecord = Record<string, unknown>;
 
 @Component({
   selector: 'app-root',
@@ -9,8 +11,9 @@ import { ProTextBox, DataSet } from './pro-text-box/pro-text-box';
   styleUrl: './app.css'
 })
 export class App {
-  public data: DataSet = {
-    value: { value: 'Some value', ivalue: 'Inherited value' },
-    other: { value: '', ivalue: 'Other inherited' }
+  public data: UniversalRecord = {
+    value: 'Some value',
+    ivalue: 'Inherited value',
+    id: 1,
   };
 }
