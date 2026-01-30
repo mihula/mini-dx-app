@@ -4,11 +4,14 @@
       <h1>Test ProTextBox</h1>
       <div>{{data | json}}</div>
 
-      <h3>Value + Inherit</h3>
-      <pro-text-box [data]="data" fieldName="value" inheritedFieldName="ivalue" [placeholder]="'Enter some value'"></pro-text-box>
+      <h3>Edit the Value</h3>
+      <pro-text-box [data]="data" fieldName="value" [placeholder]="'Enter value for field'"></pro-text-box>
 
-      <h3>Inherit display</h3>
-      <pro-text-box [data]="data" fieldName="ivalue" [placeholder]="'Enter other value'"></pro-text-box>
+      <h3>Value + Inherit</h3>
+      <pro-text-box [data]="data" fieldName="value" inheritedFieldName="ivalue" [placeholder]="'You can see me only if Inherit is empty'"></pro-text-box>
+
+      <h3>Edit the Inherit</h3>
+      <pro-text-box [data]="data" fieldName="ivalue" [placeholder]="'Enter value for Inherit'"></pro-text-box>
     </div>
   </div>
 </main>
