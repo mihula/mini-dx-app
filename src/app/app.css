@@ -51,7 +51,7 @@ main {
   display: flex;
   justify-content: space-around;
   width: 100%;
-  max-width: 700px;
+  max-width: 1200px;
   margin-bottom: 3rem;
 }
 
@@ -145,8 +145,9 @@ main {
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   margin: 2rem 0;
+  overflow-x: auto;
 }
 
 .demo-tile {
