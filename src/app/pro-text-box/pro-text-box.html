@@ -1,8 +1,11 @@
-<dx-text-box [value]="displayValue"
+<dx-text-box #textBoxRef
+             [value]="displayValue"
              [placeholder]="placeholder"
-             (onValueChanged)="onValueChanged($event)"></dx-text-box>
+             (onValueChanged)="onValueChanged($event)"
+             (onInput)="onInput()"></dx-text-box>
 <div style="font-size: 0.9em; color: #888; margin-top: 0.25em;">
   Value: {{data[fieldName]}}
   <span *ngIf="inheritedFieldName">| Inherited: {{data[inheritedFieldName]}}</span>
   | Display: {{displayValue}}
+  <span *ngIf="dirty" style="color: #c00;">| dirty</span>
 </div>
