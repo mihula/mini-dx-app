@@ -1,6 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { JsonPipe } from '@angular/common';
-import { ProTextBox } from './pro-text-box/pro-text-box';
+import { ProTextBox, DataSet } from './pro-text-box/pro-text-box';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +9,8 @@ import { ProTextBox } from './pro-text-box/pro-text-box';
   styleUrl: './app.css'
 })
 export class App {
-  public data = {
-    value: 'Some value',
-    inheritedValue: 'Inherited value'
-  }
+  public data: DataSet = {
+    value: { value: 'Some value', ivalue: 'Inherited value' },
+    other: { value: '', ivalue: 'Other inherited' }
+  };
 }

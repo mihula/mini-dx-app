@@ -1,4 +1,4 @@
 <dx-text-box [value]="displayValue"
              [placeholder]="placeholder"
-             (onValueChanged)="onDxValueChanged($event)"></dx-text-box>
-Value: {{model.value}} | Inherited: {{model.inheritedValue}} | Display: {{displayValue}}
+             (onValueChanged)="onValueChanged($event)"></dx-text-box>
+Value: {{data[fieldKey]?.value}} | Inherited: {{data[fieldKey]?.ivalue}} | Display: {{displayValue}}

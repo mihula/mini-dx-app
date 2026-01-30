@@ -2,11 +2,13 @@
   <div class="content">
     <div class="left-side">
       <h1>Test ProTextBox</h1>
+      <div>{{data | json}}</div>
 
-      <div>Data: {{data | json}}</div>
+      <h3>Value</h3>
+      <pro-text-box [data]="data" fieldKey="value" [placeholder]="'Enter some value'"></pro-text-box>
 
-      <h3>Value + Inherited</h3>
-      <pro-text-box [(model)]="data"></pro-text-box>
+      <h3>Other</h3>
+      <pro-text-box [data]="data" fieldKey="other" [placeholder]="'Enter other value'"></pro-text-box>
     </div>
   </div>
 </main>
