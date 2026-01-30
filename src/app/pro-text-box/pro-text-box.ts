@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter, ChangeDetectorRef, ViewChild } 
 import { DxTextBoxModule, DxTextBoxComponent } from 'devextreme-angular';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
+import { isEmpty } from 'rxjs';
 
 export type UniversalRecord = Record<string, unknown>;
 
@@ -24,24 +25,49 @@ export class ProTextBox {
 
   dirty = false;
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor() { }
+
+  isEmptyValue(value: string | null = null): boolean {
+    return value === '' || value === null;
+  }
+
+  isEmpty(): boolean {
+    return this.isEmptyValue(this.getRealValue());
+  }
+
+  getRealValue(): string | null {
+    return this.data?.[this.fieldName] as string;
+  }
+
+  getInheritedValue(): string | null {
+    return this.data?.[this.inheritedFieldName] as string;
+  }
 
   // Format: co zobrazit v inputu
   get displayValue(): string {
-    const value = (this.data?.[this.fieldName] as string) ?? '';
-    const ivalue = (this.data?.[this.inheritedFieldName] as string) ?? '';
-    return value === '' && ivalue ? ivalue : value;
+    const value = this.getRealValue() ?? '';
+    const ivalue = this.getInheritedValue() ?? '';
+    return this.isEmptyValue(value) && ivalue ? ivalue : value;
   }
 
   // Parse: co uložit do dat
   onValueChanged(e: any) {
-    this.data[this.fieldName] = e.value ?? '';
+    console.log(`onValueChanged: ${e.previousValue} => ${e.value}; dirty: ${this.dirty}`);
+    let newValue = e.value;
+    if (this.dirty) {
+      if (this.isEmptyValue(newValue)) {
+        console.log(`onValueChanged: there will be next onValueChanged with dirty==false which will set inherited value`);
+        let stillInherited = e.previousValue === this.getInheritedValue();
+        if (stillInherited)
+          console.log(`onValueChanged: ...until it isn't... merde 💩`);
+        this.data[this.fieldName] = null;
+      }
+      else {
+        this.data[this.fieldName] = newValue;
+      }
+    }
     this.dataChange.emit(this.data);
     this.dirty = false;
-    this.cdr.detectChanges();
-    setTimeout(() => {
-      this.textBox?.instance.repaint(); // nic nedela
-    });
   }
 
   onInput() {
