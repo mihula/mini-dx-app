@@ -51,6 +51,10 @@ export class ProTextBox {
     return this.data?.[this.inheritedFieldName] as string;
   }
 
+  get displayPlaceholder(): string {
+    return this.hasInherited() ? this.getInheritedValue() ?? '' : this.placeholder;
+  }
+
   // Format: co zobrazit v inputu
   get displayValue(): string {
     const value = this.getRealValue() ?? '';

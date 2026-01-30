@@ -10,5 +10,5 @@ import { JsonPipe } from '@angular/common';
   standalone: true,
 })
 export class ProTextBoxDemoComponent {
-  data = { value: '', ivalue: 'Děděná hodnota' };
+  data = { value: 'My value', ivalue: 'Inherited' };
 }
