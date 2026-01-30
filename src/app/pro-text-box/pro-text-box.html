@@ -1,12 +1,11 @@
-<div [ngClass]="{'inherited': isInherited()}">
-  <dx-text-box #textBoxRef
-               [value]="displayValue"
-               [placeholder]="placeholder"
-               (onValueChanged)="onValueChanged($event)"
-               (onInput)="onInput()"
-               (onFocusOut)="onFocusOut($event)">
-  </dx-text-box>
-</div>
+<dx-text-box #textBoxRef
+             [value]="displayValue"
+             [placeholder]="placeholder"
+             [ngClass]="{'inherited': isInherited()}"
+             (onValueChanged)="onValueChanged($event)"
+             (onInput)="onInput()"
+             (onFocusOut)="onFocusOut($event)">
+</dx-text-box>
 <div style="font-size: 0.9em; color: #888; margin-top: 0.25em;">
   Value: {{data[fieldName]}} | Display: {{displayValue}} | Has/Is Inherited: {{hasInherited()}} / {{isInherited()}}
   <span *ngIf="inheritedFieldName"> | Inherited: {{data[inheritedFieldName]}}</span>
