@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/0.5.85-alpha">
+<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/1.0.2752196">
   <PropertyGroup>
     <ProjectType>web</ProjectType>
     <RootNamespace>demo</RootNamespace>
@@ -20,5 +20,8 @@
     <Content Include=".editorconfig" />
     <Content Include=".gitignore" />
     <Content Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="mini-dx-app.njsproj" />
   </ItemGroup>
 </Project>

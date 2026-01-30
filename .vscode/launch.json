@@ -6,7 +6,7 @@
       "name": "ng serve",
       "type": "chrome",
       "request": "launch",
-      "preLaunchTask": "npm: start",
+      "preLaunchTask": "npm start",
       "url": "http://localhost:4200/"
     },
     {
@@ -15,6 +15,15 @@
       "request": "launch",
       "preLaunchTask": "npm: test",
       "url": "http://localhost:9876/debug.html"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Program",
+      "skipFiles": [ "<node_internals>/**" ],
+      "preLaunchTask": "npm: start",
+      "cwd": "${workspaceFolder}",
+      "console": "externalTerminal"
     }
   ]
 }
