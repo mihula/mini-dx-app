@@ -1,4 +1,17 @@
+<h1>Async Value Change</h1>
+
+<div>{{ value | json }}</div>
+<div>valueChanged emitted: {{ valueChangedEmitCount }}</div>
+<div>isValid: {{ isValid }}</div>
+<div>Validation in progress: {{ validationInProgress }}</div>
+
+<h3>Edit the Value</h3>
 <dx-text-box #textBoxRef
              [value]="value"
              (onValueChanged)="onValueChanged($event)">
+  <dx-validator>
+    <dxi-validation-rule type="async"
+                         message="Value is not valid"
+                         [validationCallback]="asyncValidation"></dxi-validation-rule>
+  </dx-validator>
 </dx-text-box>
