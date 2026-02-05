@@ -21,4 +21,7 @@
     <Content Include=".gitignore" />
     <Content Include="README.md" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\app\async-value-change\" />
+  </ItemGroup>
 </Project>
