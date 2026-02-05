@@ -39,6 +39,7 @@ export class AsyncValueChange {
   /**
    * One-shot guard: when we set the widget value programmatically, suppress the next onValueChanged
    * (which DevExtreme fires immediately) to avoid re-entrancy / loops.
+   * Might not be needed if we use the "suppressedValue" alternative.
    */
   suppressNextValueChanged: boolean = false;
 
